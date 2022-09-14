@@ -4,6 +4,13 @@ const FAILURE_RATE = process.env.FAILURE_RATE || 0.2; // 20%
 const express = require("express");
 const { v4: uuidv4 } = require('uuid');
 
+
+// keep killing process on CMD+C if the app is running in the docker
+process.on('SIGINT', () => {
+  console.info('💀💀💀💀️️')
+  process.exit(0)
+})
+
 const app = express();
 
 app.use(express.json());
